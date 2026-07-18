@@ -58,23 +58,26 @@ The project is built using modern web development and DevOps technologies to sim
 
 ## Project Structure
 
+```text
 tech-checklist/
-├── .github/            # GitHub Actions workflows
-├── public/             # Static assets
+├── .github/
+│   └── workflows/
+├── public/
 ├── src/
-│   ├── assets/         # Images, icons, fonts
-│   ├── components/     # Reusable UI components
-│   ├── constants/      # Application constants
-│   ├── layouts/        # Shared layouts
-│   ├── pages/          # Application pages
-│   ├── services/       # API communication
-│   ├── styles/         # Global and component styles
-│   ├── utils/          # Helper functions
+│   ├── assets/
+│   ├── components/
+│   ├── constants/
+│   ├── layouts/
+│   ├── pages/
+│   ├── services/
+│   ├── styles/
+│   ├── utils/
 │   ├── App.jsx
 │   └── main.jsx
 ├── Dockerfile
 ├── package.json
 └── README.md
+```
 
 
 ## Getting Started
