@@ -1,10 +1,13 @@
-import './styles/App.css';
+import "./styles/App.css";
+
+import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./components/Dashboard";
+
 function App() {
   return (
-    <main>
-      <h1>Tech Checklist</h1>
-      <p>Your personal technology learning companion.</p>
-    </main>
+    <MainLayout>
+      <Dashboard />
+    </MainLayout>
   );
 }
 

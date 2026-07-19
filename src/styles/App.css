@@ -1,13 +1,123 @@
-main {
-  max-width: 960px;
-  margin: 0 auto;
+/* ---------- Reset ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Page ---------- */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+
+
+/* ---------- Header ---------- */
+
+.header {
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 2rem;
+
+  background: white;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+  font-size: 2rem;
+}
+
+/* ---------- Main Layout ---------- */
+
+.app-container {
+  display: flex;
+
+  min-height: calc(100vh - 70px);
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  width: 240px;
+  padding: 2rem 1rem;
+
+
+  background: white;
+  border-right: 1px solid #ddd;
+
+  
+  text-align: left;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 1rem;
+
+  cursor: pointer;
+}
+
+
+/* ---------- Content ---------- */
+
+.content {
+  flex: 1;
+
   padding: 2rem;
 }
 
-h1 {
-  margin-bottom: 0.5rem;
+
+/* ---------- Dashboard ---------- */
+
+.dashboard h2 {
+  margin-bottom: 1rem;
 }
 
-p {
+.dashboard p {
   color: #555;
+}
+
+/* ---------- Dashboard Grid ---------- */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+
+  margin-top: 2rem;
+}
+
+/* ---------- Summary Card ---------- */
+
+.summary-card {
+  background: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  padding: 1.5rem;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card h3 {
+  margin-bottom: 1rem;
+
+  color: #555;
+}
+
+.summary-card p {
+  font-size: 2rem;
+
+  font-weight: bold;
 }
