@@ -12,6 +12,12 @@ Instead of relying on scattered notes and multiple tools, I wanted a single appl
 
 Tech Checklist helps users organize and monitor their software engineering learning journey through the following features:
 
+- Dashboard with learning progress overview
+- Dynamic summary cards
+- Track currently learning technologies
+- Prevent duplicate technologies
+- React state management for interactive UI
+
 ### Dashboard
 - View learning progress at a glance
 - Track completed technologies, projects, and tasks
@@ -94,3 +100,14 @@ Clone the repository:
 
 ```bash
 git clone <repository-url>
+
+
+## React Concepts Practiced
+
+- Component-based architecture
+- Component composition
+- Props
+- Rendering lists with `.map()`
+- Reusable components
+- Separation of concerns
+- Data-driven UI
