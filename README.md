@@ -25,10 +25,10 @@ Tech Checklist helps users organize and monitor their software engineering learn
 - View upcoming learning goals and priorities
 
 ### Technology Management
-- Add new technologies
-- Update existing technologies
-- Delete technologies
-- Mark technologies as completed
+
+- Add new learning technologies
+- Prevent duplicate entries
+- Manage technologies through React state
 
 ### Organization
 - Organize technologies by category
@@ -111,3 +111,18 @@ git clone <repository-url>
 - Reusable components
 - Separation of concerns
 - Data-driven UI
+- useState
+- Controlled components
+- Event handling (`onChange`)
+- Derived state
+- Single source of truth
+- Immutable state updates
+
+## Planned Features
+
+- Edit technologies
+- Delete technologies
+- Mark learning items as completed
+- Project management
+- Certifications
+- Learning roadmap

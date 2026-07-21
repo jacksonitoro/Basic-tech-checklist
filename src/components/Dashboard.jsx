@@ -10,16 +10,26 @@ import { summaryData } from "../constants/dashboardData";
 
 function Dashboard() {
   const [technologies, setTechnologies] = useState(currentlyLearning);
+  const [inputValue, setInputValue] = useState("");
   
   function addTechnology() {
-    
+    console.log("Button clicked");
+
+    const trimmedValue = inputValue.trim();
+
+    console.log("Input:", trimmedValue);
+
+    if (!trimmedValue) return;
+
     setTechnologies((prevTechnologies) => {
-      if (prevTechnologies.includes("AWS")) {
+      console.log("Previous:", prevTechnologies);
+      
+      if (prevTechnologies.includes(trimmedValue)) {
         return prevTechnologies;
       }
-      return [...prevTechnologies, "AWS"];
+      return [...prevTechnologies, trimmedValue];
     });
-    
+    setInputValue("");
   }
 
   return (
@@ -31,12 +41,22 @@ function Dashboard() {
           <SummaryCard
             key={summary.title}
             title={summary.title}
-            value={summary.value}
+            value={
+              summary.title === "Learning"
+                ? technologies.length
+                : summary.value
+            }
           />
         ))}
       </div>
       <LearningList technologies={technologies} />
 
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        placeholder="Enter new technology"
+      />
       <button onClick={addTechnology}>Add Technology</button>
 
       <RecentProjects projects={recentProjects} />

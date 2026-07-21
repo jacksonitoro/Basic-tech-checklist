@@ -39,3 +39,23 @@
 - Implemented immutable state updates
 - Established a single source of truth for learning technologies
 - Improved application interactivity through state management
+
+## Sprint 4
+
+### Added
+
+- Controlled input for adding learning technologies
+- Dynamic technology management using React state
+- Input validation for empty values
+- Automatic clearing of the input after a successful addition
+
+### Changed
+
+- Learning list is now fully user-driven
+- Learning summary card derives its value from React state
+
+### Improved
+
+- Eliminated multiple sources of truth for the learning count
+- Improved state management using derived data
+- Refactored `addTechnology()` for readability with `trimmedValue`
