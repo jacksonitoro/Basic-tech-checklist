@@ -1,40 +1,64 @@
 import { useState } from "react";
 
+//Components
+import QuickActions from "./QuickActions";
 import SummaryCard from "./SummaryCard";
 import LearningList from "./LearningList";
 import RecentProjects from "./RecentProjects";
 import Counter from "./Counter";
+
+//Styles
+import "../styles/Dashboard.css";
+
+//Data
 import { currentlyLearning } from "../constants/currentlyLearning";
 import { recentProjects } from "../constants/recentProjects";
 import { summaryData } from "../constants/dashboardData";
 
 function Dashboard() {
+
+  //State Management
   const [technologies, setTechnologies] = useState(currentlyLearning);
   const [inputValue, setInputValue] = useState("");
-  
-  function addTechnology() {
-    console.log("Button clicked");
+ 
+  // Event Handlers
 
+  function addTechnology() {
     const trimmedValue = inputValue.trim();
 
-    console.log("Input:", trimmedValue);
 
-    if (!trimmedValue) return;
+
+    if (!trimmedValue) {
+      setInputValue("");
+      return;
+    }
+      
 
     setTechnologies((prevTechnologies) => {
-      console.log("Previous:", prevTechnologies);
-      
       if (prevTechnologies.includes(trimmedValue)) {
         return prevTechnologies;
       }
+
       return [...prevTechnologies, trimmedValue];
     });
+
     setInputValue("");
+  }
+
+  function handleRemoveTechnology(technologyToRemove) {
+    setTechnologies((prevTechnologies) =>
+      prevTechnologies.filter((technology) => technology !== technologyToRemove)
+    );
   }
 
   return (
     <section className="dashboard">
-      <h2>Dashboard</h2>
+
+      <header className="dashboard-header">
+        <h1>Welcome back!</h1>
+
+        <p>Track your learning journey, build real projects, and stay focused on your goals.</p>
+      </header>
 
       <div className="summary-grid">
         {summaryData.map((summary) => (
@@ -49,15 +73,18 @@ function Dashboard() {
           />
         ))}
       </div>
-      <LearningList technologies={technologies} />
 
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter new technology"
+      <QuickActions
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        addTechnology={addTechnology}
       />
-      <button onClick={addTechnology}>Add Technology</button>
+
+
+      <LearningList 
+        technologies={technologies}
+        handleRemoveTechnology={handleRemoveTechnology}
+      />
 
       <RecentProjects projects={recentProjects} />
       <Counter />

@@ -1,0 +1,54 @@
+.quick-actions {
+  background: #ffffff;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.quick-actions h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.quick-actions-description {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.quick-actions-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.quick-actions-form input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+.primary-button {
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+}
+
+.coming-soon {
+  border-top: 1px solid #eeeeee;
+  padding-top: 1rem;
+}
+
+.coming-soon p {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.75rem;
+}
+
+.secondary-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.secondary-actions button {
+  cursor: not-allowed;
+}
