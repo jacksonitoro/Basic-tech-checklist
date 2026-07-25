@@ -1,3 +1,4 @@
+import "../styles/RecentProjects.css";
 
 function RecentProjects({ projects }) {
   return (
@@ -5,7 +6,10 @@ function RecentProjects({ projects }) {
       <h2>Recent Projects</h2>
       <ul className="recent-projects">
         {projects.map((project) => (
-          <li key={project}>{project}</li>
+          <li key={project} 
+              className="project-item">
+              {project}
+          </li>
         ))}
       </ul>
     </section>

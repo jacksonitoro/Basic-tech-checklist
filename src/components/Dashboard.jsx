@@ -5,7 +5,7 @@ import QuickActions from "./QuickActions";
 import SummaryCard from "./SummaryCard";
 import LearningList from "./LearningList";
 import RecentProjects from "./RecentProjects";
-import Counter from "./Counter";
+
 
 //Styles
 import "../styles/Dashboard.css";
@@ -87,7 +87,7 @@ function Dashboard() {
       />
 
       <RecentProjects projects={recentProjects} />
-      <Counter />
+      
     </section>
   );
 }

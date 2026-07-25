@@ -1,4 +1,4 @@
-
+import "../styles/LearningList.css";
 
 function LearningList({ technologies, handleRemoveTechnology }) {
   return (
@@ -7,11 +7,12 @@ function LearningList({ technologies, handleRemoveTechnology }) {
 
       <ul className="learning-list">
         {technologies.map((technology) => (
-          <li key={technology}>
-            <span>{technology}</span>
+          <li key={technology} className="learning-item">
+            <span className="technology-name">{technology}</span>
 
-            <button 
-              type="button" 
+            <button
+              className="remove-button"
+              type="button"
               onClick={() => handleRemoveTechnology(technology)}>
               Remove
             </button>

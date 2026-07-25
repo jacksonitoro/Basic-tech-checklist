@@ -1,0 +1,62 @@
+
+/* LearningList.css */
+.learning-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.learning-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.75rem 0;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Remove Button Styles */
+.remove-button {
+  padding: 0.35rem 0.75rem;
+
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+
+  background-color: white;
+
+  font-size: 0.875rem;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.remove-button:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.remove-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Learning Section Styles */
+.learning-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+
+  background-color: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.learning-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+
+  text-align: center;
+}
