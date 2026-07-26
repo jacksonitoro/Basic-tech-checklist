@@ -7,13 +7,16 @@ function LearningList({ technologies, handleRemoveTechnology }) {
 
       <ul className="learning-list">
         {technologies.map((technology) => (
-          <li key={technology} className="learning-item">
-            <span className="technology-name">{technology}</span>
+          <li key={technology.id} 
+              className="learning-item"
+          >
+            <span className="technology-name">{technology.name}</span>
 
             <button
               className="remove-button"
               type="button"
-              onClick={() => handleRemoveTechnology(technology)}>
+              onClick={() => handleRemoveTechnology(technology)}
+            >
               Remove
             </button>
           </li>

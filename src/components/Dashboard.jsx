@@ -35,11 +35,25 @@ function Dashboard() {
       
 
     setTechnologies((prevTechnologies) => {
-      if (prevTechnologies.includes(trimmedValue)) {
+      const technologyExists = prevTechnologies.some(
+        (technology) => 
+          technology.name.toLowerCase() === 
+          trimmedValue.toLowerCase()
+      );
+      
+      if (technologyExists) {
         return prevTechnologies;
       }
 
-      return [...prevTechnologies, trimmedValue];
+      const newTechnology = {
+        id: Date.now(),
+        name: trimmedValue,
+        category: "General",
+        status: "Learning",
+        priority: "Medium",
+      };
+
+      return [...prevTechnologies, newTechnology];
     });
 
     setInputValue("");
@@ -47,7 +61,10 @@ function Dashboard() {
 
   function handleRemoveTechnology(technologyToRemove) {
     setTechnologies((prevTechnologies) =>
-      prevTechnologies.filter((technology) => technology !== technologyToRemove)
+      prevTechnologies.filter(
+        (technology) => 
+          technology.id !== technologyToRemove.id
+      )
     );
   }
 
