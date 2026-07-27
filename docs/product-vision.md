@@ -1,10 +1,10 @@
-# Tech Checklist Vision
+# Product Vision
 
 ## Problem Statement
 
 Aspiring software engineers and DevOps professionals often use multiple disconnected tools such as notebooks, spreadsheets, browser bookmarks, GitHub repositories, and task management applications to organize their learning. This makes it difficult to maintain a clear overview of current learning, completed work, ongoing projects, and future goals.
 
-Tech Checklist aims to provide a single workspace dedicated to managing and visualizing an engineer's technical learning journey.
+Tech Checklist aims to provide a single engineering workspace that helps learners organise, prioritise and visualise their technical growth from beginner to professional software engineer.
 
 ---
 
@@ -104,3 +104,13 @@ The project should follow these principles throughout development:
 - Incremental development through small sprints
 - Document architectural decisions
 - Learn by building
+
+## Success Criteria
+
+Version 1 will be considered successful when a user can:
+
+- Add technologies
+- Organise learning
+- Track progress
+- View current focus
+- Build a growing engineering knowledge base

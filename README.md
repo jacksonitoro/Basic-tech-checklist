@@ -1,82 +1,207 @@
 # Tech Checklist
 
-Tech Checklist is a lightweight full-stack web application designed to help aspiring software engineers and DevOps professionals organize, track, and visualize their learning journey. It provides a central place to manage technologies, projects, learning tasks, certifications, and personal learning goals while offering a clear view of completed achievements, current focus areas, and future objectives.
+> **A full-stack engineering workspace for software engineers and DevOps professionals to plan, organise, and track their technical learning journey.**
+
+![Status](https://img.shields.io/badge/Status-Active%20Development-success)
+![React](https://img.shields.io/badge/React-19-blue)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)
+![Vite](https://img.shields.io/badge/Vite-Frontend-purple)
+![Express](https://img.shields.io/badge/Express-Planned-lightgrey)
+![SQLite](https://img.shields.io/badge/SQLite-Planned-lightgrey)
+![Docker](https://img.shields.io/badge/Docker-Containerisation-blue)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-black)
+
+---
+
+## Project Overview
+
+Tech Checklist is a personal engineering workspace designed to help aspiring software engineers and DevOps professionals organise, manage and visualise their technical learning journey.
+
+The application provides a central place to manage technologies, projects, certifications, learning goals and future objectives while encouraging structured, intentional learning rather than scattered notes.
+
+Beyond solving a real productivity problem, this repository also serves as a portfolio project demonstrating modern software engineering practices including domain-driven modelling, component architecture, iterative development and DevOps workflows.
+
+---
+
+## Project Status
+
+**Current Version:** Milestone 1 Complete
+
+### Completed
+
+- Dashboard UI
+- Component-based architecture
+- Technology management
+- Domain-driven Technology model
+- Duplicate prevention
+- Responsive dashboard layout
+- Docker support
+- GitHub Actions CI pipeline
+
+### In Progress
+
+- Repository professionalisation
+- Portfolio documentation
+
+### Planned
+
+- Express backend
+- SQLite database
+- Authentication
+- Search & filtering
+- Technology categories
+- Project management
+- Certification tracking
+
+---
 
 ## Why I Built This
 
-I built Tech Checklist to solve a problem I experienced during my own learning journey. As I learned new technologies, completed projects, and earned certifications, it became increasingly difficult to keep track of what I had already learned, what I was currently studying, and what I wanted to learn next.
+As my software engineering and DevOps learning expanded, I found it increasingly difficult to keep track of:
 
-Instead of relying on scattered notes and multiple tools, I wanted a single application that could organize my learning progress and serve as both a personal productivity tool and a practical full-stack software engineering project.
+- technologies I had learned
+- technologies I was currently studying
+- projects I had completed
+- certifications
+- future learning goals
+
+Rather than relying on multiple tools and scattered notes, I wanted to build one application that manages my learning journey while serving as a real-world full-stack engineering project.
+
+---
 
 ## Features
 
-Tech Checklist helps users organize and monitor their software engineering learning journey through the following features:
-
-- Dashboard with learning progress overview
-- Dynamic summary cards
-- Track currently learning technologies
-- Prevent duplicate technologies
-- React state management for interactive UI
-
 ### Dashboard
-- View learning progress at a glance
-- Track completed technologies, projects, and tasks
-- Monitor current learning activities
-- View upcoming learning goals and priorities
+
+- Learning overview
+- Dynamic summary cards
+- Currently learning technologies
+- Recent projects
+- Live learning counter
 
 ### Technology Management
 
-- Add new learning technologies
-- Prevent duplicate entries
-- Manage technologies through React state
+- Add technologies
+- Remove technologies
+- Duplicate prevention
+- Domain-based data model
 
-### Organization
-- Organize technologies by category
-- Search technologies
-- Filter technologies by category or learning status
+### Learning Organisation
 
-### Learning Progress
-- Track completed, ongoing, and planned learning
-- Monitor personal learning goals
+- Technology categories
+- Learning status
+- Priority management
+- Future roadmap planning
 
+---
 
-## Tech Stack
+## Screenshots
 
-The project is built using modern web development and DevOps technologies to simulate a production-ready full-stack application.
+### Dashboard Overview
+
+The main dashboard provides a quick overview of the current learning journey, including active technologies, summary cards, and recent projects.
+
+![Dashboard Overview](docs/screenshots/dashboard-overview.png)
+
+---
+
+### Add Technology
+
+Users can quickly add new technologies while duplicate entries are automatically prevented.
+
+![Add Technology](docs/screenshots/add-technology.png)
+
+---
+
+### Responsive Dashboard
+
+The dashboard is designed to remain clean and usable across different screen sizes.
+
+![Responsive Dashboard](docs/screenshots/responsive-dashboard.png)
+
+---
+
+## Technology Stack
 
 ### Frontend
-- React
-- Vite
-- JavaScript
 
-### Backend
+- React
+- JavaScript (ES6+)
+- Vite
+- CSS
+
+### Backend (Planned)
+
 - Express.js
 
-### Database
+### Database (Planned)
+
 - SQLite
 
 ### DevOps
+
 - Docker
 - Docker Compose
 - Nginx
 - GitHub Actions
 
+---
+
+## Software Architecture
+
+```
+React UI
+      │
+      ▼
+Component Layer
+      │
+      ▼
+Business Logic
+      │
+      ▼
+Domain Model
+      │
+      ▼
+Express API (Planned)
+      │
+      ▼
+SQLite Database (Planned)
+```
+
+The project is intentionally developed using incremental architectural evolution. Each phase focuses on improving the design while preserving existing functionality.
+
+---
+
+## Engineering Principles
+
+This project follows a set of engineering principles rather than focusing solely on implementation.
+
+- Component-Based Architecture
+- Separation of Concerns
+- Single Source of Truth
+- Domain-Driven Design
+- Product-First Development
+- Immutable State Updates
+- Incremental Refactoring
+- Design Before Implementation
+- Small, Reversible Changes
+- Behaviour-Preserving Refactoring
+
+---
 
 ## Project Structure
 
 ```text
 tech-checklist/
-├── .github/
-│   └── workflows/
+├── docs/
 ├── public/
 ├── src/
-│   ├── assets/
 │   ├── components/
 │   ├── constants/
-│   ├── layouts/
-│   ├── pages/
-│   ├── services/
 │   ├── styles/
+│   ├── pages/
+│   ├── layouts/
+│   ├── services/
 │   ├── utils/
 │   ├── App.jsx
 │   └── main.jsx
@@ -85,6 +210,7 @@ tech-checklist/
 └── README.md
 ```
 
+---
 
 ## Getting Started
 
@@ -96,33 +222,73 @@ tech-checklist/
 
 ### Installation
 
-Clone the repository:
-
 ```bash
 git clone <repository-url>
 
+cd tech-checklist
 
-## React Concepts Practiced
+npm install
 
-- Component-based architecture
-- Component composition
-- Props
-- Rendering lists with `.map()`
-- Reusable components
-- Separation of concerns
-- Data-driven UI
-- useState
-- Controlled components
-- Event handling (`onChange`)
-- Derived state
-- Single source of truth
-- Immutable state updates
+npm run dev
+```
 
-## Planned Features
+---
 
-- Edit technologies
-- Delete technologies
-- Mark learning items as completed
-- Project management
-- Certifications
-- Learning roadmap
+## Roadmap
+
+### Milestone 1 ✅
+
+- Dashboard
+- Technology Management
+- Domain Model
+- Component Architecture
+- CI Pipeline
+
+### Milestone 2
+
+- Categories
+- Search
+- Filtering
+- Edit Technologies
+
+### Milestone 3
+
+- Express REST API
+- SQLite
+- Authentication
+- User Accounts
+
+---
+
+## What I Learned
+
+This project has strengthened my practical experience with:
+
+- React component architecture
+- State management
+- Domain modelling
+- Software design
+- Git branching strategy
+- Docker
+- CI/CD with GitHub Actions
+- Engineering documentation
+- Product-oriented software development
+
+---
+
+## Author
+
+**Jackson Itoro**
+
+Digital Technology & Management Student
+
+Aspiring Software Engineer | Backend & DevOps Enthusiast
+
+---
+
+
+## License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
+
+> **Tech Checklist is more than a learning tracker—it is a continuous software engineering project used to practise professional development workflows, software architecture and full-stack engineering.**

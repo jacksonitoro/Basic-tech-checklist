@@ -1,16 +1,16 @@
 # Tech Checklist Architecture
 
-Version: 1.0
-
-Status: Draft
-
-Last Updated: July 2026
+| Property | Value |
+|----------|-------|
+| Version | 1.0 |
+| Status | Active |
+| Last Updated | July 2026 |
 
 ---
 
 # Overview
 
-Tech Checklist is a lightweight full-stack application that helps aspiring software engineers and DevOps professionals organize, manage, and track their technical learning journey.
+Tech Checklist is a full-stack engineering workspace that helps aspiring software engineers and DevOps professionals organize, manage, and track their technical learning journey.
 
 The application follows a component-based architecture using React. The design emphasizes simplicity, maintainability, scalability, and reusable components while following a single source of truth for application state.
 
@@ -39,23 +39,17 @@ Future versions may introduce additional learning item types such as:
 
 # Component Hierarchy
 
+```text
 App
-
-├── Layout
-
-│   ├── Sidebar
-
-│   ├── Header
-
-│   └── Dashboard
-
-│       ├── SummaryCard
-
-│       ├── LearningList
-
-│       ├── RecentProjects
-
-│       └── Counter
+└── Layout
+    ├── Sidebar
+    ├── Header
+    └── Dashboard
+        ├── SummaryCard
+        ├── LearningList
+        ├── RecentProjects
+        └── Counter
+```
 
 Future components may include:
 
@@ -92,18 +86,15 @@ Future state may include:
 React follows a one-way data flow.
 
 User Interaction
-
-↓
-
+        │
+        ▼
 Dashboard State
-
-↓
-
-Child Components
-
-↓
-
-Updated UI
+        │
+        ▼
+Business Logic
+        │
+        ▼
+Updated React UI
 
 ---
 
@@ -144,5 +135,19 @@ The project follows these architectural principles:
 - Immutable State Updates
 - Incremental Development
 - Scalable Component Design
+
+
+## Current Architecture
+
+Version 1 follows a client-side architecture where all application state is managed within the React frontend.
+
+Future versions will gradually introduce:
+
+- Express REST API
+- SQLite persistence
+- Authentication
+- User profiles
+
+This incremental approach allows the project to evolve while maintaining a stable and testable codebase.
 
 Future architectural decisions should continue to prioritize simplicity, readability, and maintainability.
