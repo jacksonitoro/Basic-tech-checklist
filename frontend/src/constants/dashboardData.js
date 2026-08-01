@@ -1,6 +1,6 @@
 export const summaryData = [
   {
-    title: "Technologies",
+    title: "Knowledge Items",
     value: 24,
   },
   {

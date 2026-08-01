@@ -3,14 +3,14 @@ import "../styles/QuickActions.css";
 function QuickActions({
   inputValue,
   setInputValue,
-  addTechnology,
+  addKnowledgeItem
 }) {
   return (
     <section className="quick-actions">
       <h3>Quick Actions</h3>
 
       <p className="quick-actions-description">
-        Quickly add new technologies to your learning journey.
+        Quickly add new knowledge items to your learning journey.
       </p>
 
       <div className="quick-actions-form">
@@ -18,14 +18,14 @@ function QuickActions({
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Enter new technology"
+          placeholder="Enter new knowledge item"
         />
 
         <button
           className="primary-button"
-          onClick={addTechnology}
+          onClick={addKnowledgeItem}
         >
-          Add Technology
+          Add Knowledge Item
         </button>
       </div>
 

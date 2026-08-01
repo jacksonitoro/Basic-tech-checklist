@@ -4,7 +4,7 @@ function Sidebar() {
       <nav>
         <ul>
           <li>Dashboard</li>
-          <li>Technologies</li>
+          <li>Knowledge Items</li>
           <li>Projects</li>
           <li>Certifications</li>
         </ul>

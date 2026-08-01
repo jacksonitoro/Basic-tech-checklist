@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Components
 import QuickActions from "./QuickActions";
@@ -11,19 +11,36 @@ import RecentProjects from "./RecentProjects";
 import "../styles/Dashboard.css";
 
 //Data
-import { currentlyLearning } from "../constants/currentlyLearning";
+import { getKnowledgeItems } from "../services/knowledgeItemService";
+
 import { recentProjects } from "../constants/recentProjects";
 import { summaryData } from "../constants/dashboardData";
 
 function Dashboard() {
 
   //State Management
-  const [technologies, setTechnologies] = useState(currentlyLearning);
+ const [knowledgeItems, setKnowledgeItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+  async function loadKnowledgeItems() {
+    try {
+      const data = await getKnowledgeItems();
+
+      
+
+      setKnowledgeItems(data);
+    } catch (error) {
+      console.error("Failed to load KnowledgeItems:", error);
+    }
+  }
+
+  loadKnowledgeItems();
+}, []);
  
   // Event Handlers
 
-  function addTechnology() {
+  function addKnowledgeItem() {
     const trimmedValue = inputValue.trim();
 
 
@@ -34,36 +51,36 @@ function Dashboard() {
     }
       
 
-    setTechnologies((prevTechnologies) => {
-      const technologyExists = prevTechnologies.some(
-        (technology) => 
-          technology.name.toLowerCase() === 
+    setKnowledgeItems((prevKnowledgeItems) => {
+      const knowledgeItemExists = prevKnowledgeItems.some(
+        (item) => 
+          item.title.toLowerCase() === 
           trimmedValue.toLowerCase()
       );
       
-      if (technologyExists) {
-        return prevTechnologies;
+      if (knowledgeItemExists) {
+        return prevKnowledgeItems;
       }
 
-      const newTechnology = {
+      const newKnowledgeItem = {
         id: Date.now(),
-        name: trimmedValue,
+        title: trimmedValue,
         category: "General",
         status: "Learning",
         priority: "Medium",
       };
 
-      return [...prevTechnologies, newTechnology];
+      return [...prevKnowledgeItems, newKnowledgeItem];
     });
 
     setInputValue("");
   }
 
-  function handleRemoveTechnology(technologyToRemove) {
-    setTechnologies((prevTechnologies) =>
-      prevTechnologies.filter(
-        (technology) => 
-          technology.id !== technologyToRemove.id
+  function handleRemoveKnowledgeItem(knowledgeItemToRemove) {
+    setKnowledgeItems((prevKnowledgeItems) =>
+      prevKnowledgeItems.filter(
+        (item) => 
+          item.id !== knowledgeItemToRemove.id
       )
     );
   }
@@ -84,7 +101,7 @@ function Dashboard() {
             title={summary.title}
             value={
               summary.title === "Learning"
-                ? technologies.length
+                ? knowledgeItems.length
                 : summary.value
             }
           />
@@ -94,13 +111,13 @@ function Dashboard() {
       <QuickActions
         inputValue={inputValue}
         setInputValue={setInputValue}
-        addTechnology={addTechnology}
+        addKnowledgeItem={addKnowledgeItem}
       />
 
 
       <LearningList 
-        technologies={technologies}
-        handleRemoveTechnology={handleRemoveTechnology}
+        knowledgeItems={knowledgeItems}
+        handleRemoveKnowledgeItem={handleRemoveKnowledgeItem}
       />
 
       <RecentProjects projects={recentProjects} />

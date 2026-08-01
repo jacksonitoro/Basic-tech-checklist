@@ -1,21 +1,23 @@
 import "../styles/LearningList.css";
 
-function LearningList({ technologies, handleRemoveTechnology }) {
+function LearningList({ 
+  knowledgeItems, 
+  handleRemoveKnowledgeItem }) {
   return (
     <section className="learning-section">
       <h2>Currently Learning</h2>
 
       <ul className="learning-list">
-        {technologies.map((technology) => (
-          <li key={technology.id} 
+        {knowledgeItems.map((item) => (
+          <li key={item.id} 
               className="learning-item"
           >
-            <span className="technology-name">{technology.name}</span>
+            <span className="knowledge-item-name">{item.title}</span>
 
             <button
               className="remove-button"
               type="button"
-              onClick={() => handleRemoveTechnology(technology)}
+              onClick={() => handleRemoveKnowledgeItem(item)}
             >
               Remove
             </button>
