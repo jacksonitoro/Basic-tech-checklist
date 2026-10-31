@@ -28,3 +28,26 @@ export async function createKnowledgeItem(knowledgeItem) {
 
   return response.json();
 }
+
+// Update a Knowledge Item
+export async function updateKnowledgeItem(id, knowledgeItem) {
+  const response = await fetch(
+    `${API_BASE_URL}/knowledge-items/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(knowledgeItem),
+    }
+  );
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(
+      errorData.message || "Failed to update KnowledgeItem."
+    );
+  }
+
+  return response.json();
+}

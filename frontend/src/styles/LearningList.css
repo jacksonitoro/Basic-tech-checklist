@@ -60,3 +60,87 @@
 
   text-align: center;
 }
+
+
+/* Knowledge Item Details */
+.knowledge-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.knowledge-item-meta {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+/* Learning Item Actions */
+.learning-item-actions,
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.edit-button:hover,
+.cancel-button:hover {
+  background-color: #f3f4f6;
+}
+
+/* Inline Editing Form */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.edit-form input,
+.edit-form select {
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.save-button {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.save-button:hover {
+  background-color: #1d4ed8;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.edit-form input:focus-visible,
+.edit-form select:focus-visible,
+.edit-button:focus-visible,
+.save-button:focus-visible,
+.cancel-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}

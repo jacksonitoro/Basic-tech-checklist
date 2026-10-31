@@ -69,3 +69,55 @@ export function createKnowledgeItem(knowledgeItem) {
     );
   });
 }
+
+
+// Update an existing Knowledge Item
+export function updateKnowledgeItem(id, knowledgeItem) {
+  return new Promise((resolve, reject) => {
+    const { title, category, status, progress } = knowledgeItem;
+
+    const sql = `
+      UPDATE knowledge_items
+      SET
+        title = ?,
+        category = ?,
+        status = ?,
+        progress = ?
+      WHERE id = ?;
+    `;
+
+    db.run(
+      sql,
+      [title, category, status, progress, id],
+      function (err) {
+        if (err) {
+          reject(err);
+          return;
+        }
+
+        // Check whether a record was updated
+        if (this.changes === 0) {
+          resolve(null);
+          return;
+        }
+
+        // Retrieve the updated record
+        db.get(
+          `SELECT id, title, category, status, progress
+           FROM knowledge_items
+           WHERE id = ?;`,
+          [id],
+          (err, row) => {
+            if (err) {
+              reject(err);
+            } else if (!row) {
+              reject(new Error("Updated Knowledge Item could not be retrieved."));
+            } else {
+              resolve(row);
+            }
+          }
+        );
+      }
+    );
+  });
+}

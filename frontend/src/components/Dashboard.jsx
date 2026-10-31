@@ -13,7 +13,8 @@ import "../styles/Dashboard.css";
 //Data
 import {
   getKnowledgeItems,
-  createKnowledgeItem
+  createKnowledgeItem,
+  updateKnowledgeItem
 } from "../services/knowledgeItemService";
 
 import { recentProjects } from "../constants/recentProjects";
@@ -22,26 +23,28 @@ import { summaryData } from "../constants/dashboardData";
 function Dashboard() {
 
   //State Management
- const [knowledgeItems, setKnowledgeItems] = useState([]);
+  const [knowledgeItems, setKnowledgeItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [isAdding, setIsAdding] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
-  async function loadKnowledgeItems() {
-    try {
-      const data = await getKnowledgeItems();
+    async function loadKnowledgeItems() {
+      try {
+        const data = await getKnowledgeItems();
 
-      
 
-      setKnowledgeItems(data);
-    } catch (error) {
-      console.error("Failed to load KnowledgeItems:", error);
+
+        setKnowledgeItems(data);
+      } catch (error) {
+        console.error("Failed to load KnowledgeItems:", error);
+      }
     }
-  }
 
-  loadKnowledgeItems();
-}, []);
- 
+    loadKnowledgeItems();
+  }, []);
+
   // Event Handlers
 
   async function addKnowledgeItem() {
@@ -87,10 +90,62 @@ function Dashboard() {
     }
   }
 
+  function handleEditKnowledgeItem(item) {
+    setEditingItem({ ...item });
+  }
+
+  function handleCancelEdit() {
+    setEditingItem(null);
+  }
+
+  function handleEditChange(field, value) {
+    setEditingItem((prevItem) => ({
+      ...prevItem,
+      [field]: value,
+    }));
+  }
+
+  async function handleUpdateKnowledgeItem() {
+    if (!editingItem || isUpdating) {
+      return;
+    }
+
+    try {
+      setIsUpdating(true);
+
+      const updatedKnowledgeItem = await updateKnowledgeItem(
+        editingItem.id,
+        {
+          title: editingItem.title.trim(),
+          category: editingItem.category.trim(),
+          status: editingItem.status,
+          progress: Number(editingItem.progress),
+        }
+      );
+
+      setKnowledgeItems((prevKnowledgeItems) =>
+        prevKnowledgeItems.map((item) =>
+          item.id === updatedKnowledgeItem.id
+            ? updatedKnowledgeItem
+            : item
+        )
+      );
+
+      setEditingItem(null);
+
+    } catch (error) {
+      console.error("Failed to update KnowledgeItem:", error);
+      alert(error.message);
+
+    } finally {
+      setIsUpdating(false);
+    }
+  }
+
   function handleRemoveKnowledgeItem(knowledgeItemToRemove) {
     setKnowledgeItems((prevKnowledgeItems) =>
       prevKnowledgeItems.filter(
-        (item) => 
+        (item) =>
           item.id !== knowledgeItemToRemove.id
       )
     );
@@ -127,13 +182,19 @@ function Dashboard() {
       />
 
 
-      <LearningList 
+      <LearningList
         knowledgeItems={knowledgeItems}
         handleRemoveKnowledgeItem={handleRemoveKnowledgeItem}
+        editingItem={editingItem}
+        handleEditKnowledgeItem={handleEditKnowledgeItem}
+        handleCancelEdit={handleCancelEdit}
+        handleEditChange={handleEditChange}
+        handleUpdateKnowledgeItem={handleUpdateKnowledgeItem}
+        isUpdating={isUpdating}
       />
 
       <RecentProjects projects={recentProjects} />
-      
+
     </section>
   );
 }
