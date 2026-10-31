@@ -11,7 +11,10 @@ import RecentProjects from "./RecentProjects";
 import "../styles/Dashboard.css";
 
 //Data
-import { getKnowledgeItems } from "../services/knowledgeItemService";
+import {
+  getKnowledgeItems,
+  createKnowledgeItem
+} from "../services/knowledgeItemService";
 
 import { recentProjects } from "../constants/recentProjects";
 import { summaryData } from "../constants/dashboardData";
@@ -21,6 +24,7 @@ function Dashboard() {
   //State Management
  const [knowledgeItems, setKnowledgeItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
   async function loadKnowledgeItems() {
@@ -40,40 +44,47 @@ function Dashboard() {
  
   // Event Handlers
 
-  function addKnowledgeItem() {
+  async function addKnowledgeItem() {
     const trimmedValue = inputValue.trim();
 
+    if (!trimmedValue || isAdding) {
+      return;
+    }
 
+    const knowledgeItemExists = knowledgeItems.some(
+      (item) =>
+        item.title.toLowerCase() === trimmedValue.toLowerCase()
+    );
 
-    if (!trimmedValue) {
+    if (knowledgeItemExists) {
       setInputValue("");
       return;
     }
-      
 
-    setKnowledgeItems((prevKnowledgeItems) => {
-      const knowledgeItemExists = prevKnowledgeItems.some(
-        (item) => 
-          item.title.toLowerCase() === 
-          trimmedValue.toLowerCase()
-      );
-      
-      if (knowledgeItemExists) {
-        return prevKnowledgeItems;
-      }
+    try {
+      setIsAdding(true);
 
-      const newKnowledgeItem = {
-        id: Date.now(),
+      const newKnowledgeItem = await createKnowledgeItem({
         title: trimmedValue,
         category: "General",
         status: "Learning",
-        priority: "Medium",
-      };
+        progress: 0,
+      });
 
-      return [...prevKnowledgeItems, newKnowledgeItem];
-    });
+      setKnowledgeItems((prevKnowledgeItems) => [
+        ...prevKnowledgeItems,
+        newKnowledgeItem,
+      ]);
 
-    setInputValue("");
+      setInputValue("");
+
+    } catch (error) {
+      console.error("Failed to create KnowledgeItem:", error);
+      alert(error.message);
+
+    } finally {
+      setIsAdding(false);
+    }
   }
 
   function handleRemoveKnowledgeItem(knowledgeItemToRemove) {
@@ -112,6 +123,7 @@ function Dashboard() {
         inputValue={inputValue}
         setInputValue={setInputValue}
         addKnowledgeItem={addKnowledgeItem}
+        isAdding={isAdding}
       />
 
 

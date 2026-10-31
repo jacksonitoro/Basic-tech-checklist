@@ -3,7 +3,8 @@ import "../styles/QuickActions.css";
 function QuickActions({
   inputValue,
   setInputValue,
-  addKnowledgeItem
+  addKnowledgeItem,
+  isAdding
 }) {
   return (
     <section className="quick-actions">
@@ -24,8 +25,9 @@ function QuickActions({
         <button
           className="primary-button"
           onClick={addKnowledgeItem}
+          disabled={isAdding || !inputValue.trim()}
         >
-          Add Knowledge Item
+          {isAdding ? "Adding..." : "Add Knowledge Item"}
         </button>
       </div>
 

@@ -1,8 +1,13 @@
 import express from "express";
-import { getKnowledgeItems } from "../controllers/knowledgeItemController.js";
+
+import {
+  getKnowledgeItems,
+  postKnowledgeItem
+} from "../controllers/knowledgeItemController.js";
 
 const router = express.Router();
 
 router.get("/", getKnowledgeItems);
+router.post("/", postKnowledgeItem);
 
 export default router;
